@@ -31,6 +31,7 @@ async function startProcess (opts) {
 	const start = ['start', '--none', '--log=stdout'];
 	if (opts.region) start.push('--region=' + opts.region);
 	if (opts.configPath) start.push('--config=' + opts.configPath);
+	if (!opts.inspect) start.push("--inspect=false");
 	if (opts.binPath) dir = opts.binPath(dir);
 	
 	const ngrok = spawn(bin, start, {cwd: dir});
